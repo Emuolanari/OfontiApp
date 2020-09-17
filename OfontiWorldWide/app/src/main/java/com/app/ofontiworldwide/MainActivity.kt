@@ -1,8 +1,7 @@
 package com.app.ofontiworldwide
-
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -11,9 +10,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        men.setOnClickListener {
-            val intent = Intent(this, MenActivity::class.java)
-            startActivity(intent)
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl("https://www.ofonti.com")
+
+        val webSettings = webView.settings
+        webSettings.javaScriptEnabled
+    }
+
+    override fun onBackPressed() {
+        if (webView.canGoBack()){
+            webView.goBack()
+        }
+
+        else{
+            super.onBackPressed()
         }
     }
 }
