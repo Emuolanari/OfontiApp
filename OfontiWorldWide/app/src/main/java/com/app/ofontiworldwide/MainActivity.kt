@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         webView.loadUrl("https://www.ofonti.com")
 
         val webSettings = webView.settings
-        webSettings.javaScriptEnabled
+        webSettings.javaScriptEnabled = true
     }
 
     override fun onBackPressed() {
